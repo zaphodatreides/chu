@@ -80,7 +80,12 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		 String toPath = this.getFilesDir().toString();  // Your application path
 		//AssetManager assetmanager= this.getAssets();
-		copyAssetFolder(this.getAssets(),"test",toPath);
+		File copied = new File (toPath+"copied");
+		if (! copied.exists() ) {
+			copyAssetFolder(this.getAssets(),"test",toPath);
+			Log.v ("chu","asset copied");
+		}
+	
 		webview = (WebView) findViewById (R.id.webView1);
 		webview.getSettings().setLoadWithOverviewMode(true);
         webview.getSettings().setUseWideViewPort(true);
