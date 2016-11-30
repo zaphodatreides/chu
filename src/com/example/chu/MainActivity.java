@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import android.app.Activity;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -87,6 +88,9 @@ public class MainActivity extends Activity {
 		}
 	
 		webview = (WebView) findViewById (R.id.webView1);
+		webview.getSettings().setBuiltInZoomControls(true);
+		webview.getSettings().setDisplayZoomControls(false);
+
 		webview.getSettings().setLoadWithOverviewMode(true);
         webview.getSettings().setUseWideViewPort(true);
       
@@ -98,11 +102,15 @@ public class MainActivity extends Activity {
 		        }
 		    });
 
-		webview.loadUrl("file://"+toPath+"/test.htm");
+		webview.loadUrl("file://"+toPath+"/cl.htm");
         
 
 		}
-
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig){        
+	    super.onConfigurationChanged(newConfig);
+	}
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
